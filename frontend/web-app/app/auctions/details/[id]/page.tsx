@@ -1,4 +1,4 @@
-import { getBidsForAuction, getDetailedViewData } from '@/app/actions/auctionActions';
+import { getDetailedViewData } from '@/app/actions/auctionActions';
 import Heading from '@/app/components/Heading';
 import React from 'react';
 import CountdownTimer from '../../CountdownTimer';
@@ -7,18 +7,18 @@ import DetailedSpecs from './DetailedSpecs';
 import { getCurrentUser } from '@/app/actions/authActions';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
-import BidItem from './BidItem';
 import BidList from './BidList';
 
-export default async function Details({ params }: { params: { id: string } }) {
-  const data = await getDetailedViewData(params.id);
+export default async function Details({ params }: { params: Promise<{ id: string }> }) {
+  const id = (await params).id;
+  const data = await getDetailedViewData(id);
   const user = await getCurrentUser();
 
   return (
     <div>
       <div className="flex justify-between">
         <div className="flex item-center gap-3">
-          <Heading title={`${data.make} ${data.model}`} />
+          <Heading title={`${data.make} ${data.model}`} subtitle={''} />
           {user?.username === data.seller && (
             <>
               <EditButton id={data.id} />

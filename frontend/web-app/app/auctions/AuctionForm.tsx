@@ -21,7 +21,7 @@ export default function AuctionForm({ auction }: Props) {
     handleSubmit,
     setFocus,
     reset,
-    formState: { isSubmitting, isValid, isDirty, errors },
+    formState: { isSubmitting, isValid },
   } = useForm({
     mode: 'onTouched',
   });

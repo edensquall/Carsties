@@ -16,7 +16,7 @@ jobs:
           - name: 'edensquall/search-svc'
             path: 'src/SearchService'
           - name: 'edensquall/bid-svc'
-            path: 'src/BidService'
+            path: 'src/BiddingService'
           - name: 'edensquall/identity-svc'
             path: 'src/IdentityService'
           - name: 'edensquall/gateway-svc'

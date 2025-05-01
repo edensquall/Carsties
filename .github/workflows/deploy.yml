@@ -6,7 +6,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build-and-push:
     runs-on: ubuntu-latest
     strategy:
@@ -14,6 +13,18 @@ jobs:
         service:
           - name: 'edensquall/auction-svc'
             path: 'src/AuctionService'
+          - name: 'edensquall/search-svc'
+            path: 'src/SearchService'
+          - name: 'edensquall/bid-svc'
+            path: 'src/BidService'
+          - name: 'edensquall/identity-svc'
+            path: 'src/IdentityService'
+          - name: 'edensquall/gateway-svc'
+            path: 'src/GatewayService'
+          - name: 'edensquall/notify-svc'
+            path: 'src/NotificationService'
+          - name: 'edensquall/web-app'
+            path: 'frontend/web-app'
 
     steps:
     - name: Checkout code
@@ -32,6 +43,6 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: .
-        file: ${{matrix.service.path}}//Dockerfile
+        file: ${{matrix.service.path}}/Dockerfile
         push: true
         tags: ${{matrix.service.name}}:latest

@@ -13,8 +13,7 @@ spec:
     spec:
       containers:
       - name: search-svc
-        image: edensquall/search-svc
-        imagePullPolicy: Never
+        image: edensquall/search-svc:latest
         env:
           - name: ConnectionStrings__MongoDbConnection
             valueFrom:

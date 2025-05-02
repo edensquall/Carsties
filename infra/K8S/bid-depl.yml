@@ -13,8 +13,7 @@ spec:
     spec:
       containers:
       - name: bid-svc
-        image: edensquall/bid-svc
-        imagePullPolicy: Never
+        image: edensquall/bid-svc:latest
         env:
           - name: ConnectionStrings__BidDbConnection
             valueFrom:

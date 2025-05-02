@@ -63,3 +63,28 @@ jobs:
         file: ${{matrix.service.path}}/Dockerfile
         push: true
         tags: ${{matrix.service.name}}:latest
+  apply-k8s:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          version: '>= 520.0.0'
+
+      - name: Get GKE credentials
+        run: |
+          gcloud container clusters get-credentials carsties \
+            --zone asia-east1-a \
+            --project ${{ secrets.GCP_PROJECT_ID }}
+      
+      - name: Apply the K8S deployments
+        run: kubectl apply -f infra/K8S & kubectl apply -f infra/prod-k8s

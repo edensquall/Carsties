@@ -13,8 +13,7 @@ spec:
     spec:
       containers:
       - name: auction-svc
-        image: edensquall/auction-svc
-        imagePullPolicy: Never
+        image: edensquall/auction-svc:latest
         env:
           - name: ConnectionStrings__DefaultConnection
             valueFrom:

@@ -20,12 +20,12 @@ spec:
               secretKeyRef:
                 name: search-secret
                 key: connString        
-          - name: rabbitMq__Username
+          - name: RabbitMQ__Username
             valueFrom:
               secretKeyRef:
                 name: rabbit-secret
                 key: username        
-          - name: rabbitMq__Password
+          - name: RabbitMQ__Password
             valueFrom:
               secretKeyRef:
                 name: rabbit-secret

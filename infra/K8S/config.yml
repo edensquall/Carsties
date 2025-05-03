@@ -4,11 +4,11 @@ metadata:
   name: auction-svc-config
 data:
   ASPNETCORE_URLS: http://+:80;http://+:7777
-  rabbitMq__Host: rabbit-clusterip
+  RabbitMq__Host: rabbit-clusterip
   IdentityServiceUrl: http://identity-clusterip
-  Kestrel__Endpoints__Grpc__Protocals: Http2
+  Kestrel__Endpoints__Grpc__Protocols: Http2
   Kestrel__Endpoints__Grpc__Url: http://+:7777
-  Kestrel__Endpoints__WebApi__Protocals: Http1
+  Kestrel__Endpoints__WebApi__Protocols: Http1
   Kestrel__Endpoints__WebApi__Url: Http://+:80
 ---
 apiVersion: v1
@@ -17,7 +17,7 @@ metadata:
   name: search-svc-config
 data:
   ASPNETCORE_URLS: http://+:80
-  rabbitMq__Host: rabbit-clusterip
+  RabbitMq__Host: rabbit-clusterip
   AuctionServiceUrl: http://auction-clusterip
 ---
 apiVersion: v1
@@ -26,7 +26,7 @@ metadata:
   name: bid-svc-config
 data:
   ASPNETCORE_URLS: http://+:80
-  rabbitMq__Host: rabbit-clusterip
+  RabbitMq__Host: rabbit-clusterip
   IdentityServiceUrl: http://identity-svc
   GrpcAuction: http://auction-clusterip:7777
 ---
@@ -36,7 +36,7 @@ metadata:
   name: notify-svc-config
 data:
   ASPNETCORE_URLS: http://+:80
-  rabbitMq__Host: rabbit-clusterip
+  RabbitMq__Host: rabbit-clusterip
 ---
 apiVersion: v1
 kind: ConfigMap
